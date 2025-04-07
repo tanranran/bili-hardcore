@@ -1,3 +1,5 @@
+import time
+
 from client.senior import captcha_get, captcha_submit, category_get, question_get, question_submit
 from tools.logger import logger
 from tools.LLM.gemini import GeminiAPI
@@ -41,6 +43,7 @@ class QuizSession:
                     continue
 
                 result = self.answers[answer-1]
+                time.sleep(5)
                 if not self.submit_answer(result):
                     logger.error("提交答案失败")
                     return
